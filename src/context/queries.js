@@ -23,8 +23,12 @@ export const getSeriesListingQuery = type => gql`
     listseries(type: "${type}") {
     month
     series {
-        seriesID
-        seriesName
+        seriesID,
+        seriesName,
+        Odicount,
+        T20count,
+        Testcount,
+        league
     }
     }
   }

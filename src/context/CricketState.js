@@ -15,7 +15,8 @@ const CricketState = props => {
   const initialState = {
     status: CONST.UPCOMING,
     type: CONST.ALL,
-    series: []
+    series: [],
+    seriesListing: []
   };
 
   const client = new ApolloClient({
@@ -80,6 +81,7 @@ const CricketState = props => {
         status: state.status,
         type: state.type,
         series: state.series,
+        seriesListing: state.seriesListing,
         getData,
         changeStatus,
         changeType,

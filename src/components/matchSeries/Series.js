@@ -4,13 +4,18 @@ import SeriesItem from "./SeriesItem";
 
 const Series = () => {
   const cricketContext = useContext(CricketContext);
-  const { status, type, getData, series, getSeriesListing } = cricketContext;
+  const {
+    status,
+    type,
+    getData,
+    seriesListing,
+    getSeriesListing
+  } = cricketContext;
   useEffect(() => {
-    console.log(cricketContext);
     getSeriesListing(type);
     getData(type, status);
   }, [status, type]);
-  return series.map(s => <SeriesItem key={s.matchID} series={s} />);
+  return seriesListing.map(s => <SeriesItem key={s.matchID} series={s} />);
 };
 
 export default Series;

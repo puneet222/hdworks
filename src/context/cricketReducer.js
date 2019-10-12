@@ -1,4 +1,10 @@
-import { GET_DATA, CHANGE_TYPE, CHANGE_STATUS, GET_SERIES } from "./types";
+import {
+  GET_DATA,
+  CHANGE_TYPE,
+  CHANGE_STATUS,
+  GET_SERIES,
+  GET_SERIES_LISTING
+} from "./types";
 
 export default (state, action) => {
   switch (action.type) {
@@ -9,11 +15,15 @@ export default (state, action) => {
       };
     }
     case GET_SERIES: {
-      console.log("here");
-      console.log(action.payload);
       return {
         ...state,
         series: action.payload
+      };
+    }
+    case GET_SERIES_LISTING: {
+      return {
+        ...state,
+        seriesListing: action.payload
       };
     }
     case CHANGE_TYPE: {
