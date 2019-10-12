@@ -1,11 +1,12 @@
 import React from "react";
 import "./App.css";
 import CricketState from "./context/CricketState";
+import Header from "./components/Header";
 
 const App = () => {
   return (
     <CricketState>
-      <div className="App"></div>
+      <Header />
     </CricketState>
   );
 };
