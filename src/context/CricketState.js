@@ -8,7 +8,7 @@ import {
   GET_SERIES_LISTING
 } from "./types";
 import * as CONST from "../Utils/constants";
-import { default as ApolloClient, gql } from "apollo-boost";
+import { default as ApolloClient } from "apollo-boost";
 import { getScheduleQuery, getSeriesListingQuery } from "./queries";
 
 const CricketState = props => {
