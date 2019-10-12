@@ -7,7 +7,7 @@ const MatchType = () => {
   const { changeType } = cricketContext;
 
   return (
-    <div className="ph3">
+    <div className="ph3 mb5">
       <div className="fl w-third pa2">
         <a
           className="f6 w-100 tc grow no-underline br-pill ph3 pv2 mb2 dib white bg-purple"

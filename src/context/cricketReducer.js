@@ -1,4 +1,4 @@
-import { GET_DATA, CHANGE_TYPE, CHANGE_STATUS } from "./types";
+import { GET_DATA, CHANGE_TYPE, CHANGE_STATUS, GET_SERIES } from "./types";
 
 export default (state, action) => {
   switch (action.type) {
@@ -6,6 +6,14 @@ export default (state, action) => {
       return {
         ...state,
         type: "ALL"
+      };
+    }
+    case GET_SERIES: {
+      console.log("here");
+      console.log(action.payload);
+      return {
+        ...state,
+        series: action.payload
       };
     }
     case CHANGE_TYPE: {
