@@ -43,9 +43,8 @@ export const getMatchListingQuery = seriesID => gql`
         awayTeamShortName,
         matchResult,
         venue,
-        matchType,
         statusMessage,
-        toss,
-        seriesName
+        matchResult,
+        startDate
     }
 }`;

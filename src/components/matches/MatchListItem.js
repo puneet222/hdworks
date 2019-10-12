@@ -1,4 +1,6 @@
 import React from "react";
+// import Flag from "react-flags";
+import Flag from "react-world-flags";
 
 const MatchListItem = ({ match }) => {
   console.log(match);
@@ -15,6 +17,25 @@ const MatchListItem = ({ match }) => {
           >
             {match.venue}
           </a>
+          <div className="tc inline-flex">
+            <div className="fl w-40 pa2">
+              <Flag
+                className="br2 w3 dib"
+                code={match.homeTeamShortName}
+                height="32"
+              />
+              <h5 className="mv2">{match.homeTeamShortName}</h5>
+            </div>
+            <div className="fl w-20 pa2">V/S</div>
+            <div className="fl w-40 pa2">
+              <Flag
+                className="br2 w3 dib"
+                code={match.awayTeamShortName}
+                height="32"
+              />
+              <h5 className="mv2">{match.awayTeamShortName}</h5>
+            </div>
+          </div>
         </div>
       </div>
     </article>
