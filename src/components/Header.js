@@ -14,7 +14,7 @@ const Header = () => {
 
   return (
     <header className="bg-white black-80 tc pv3 avenir">
-      <h1 className="mt2 mb0 baskerville i fw1 f1">Schedule</h1>
+      <h1 className="mt2 mb0 baskerville i fw1 f2">Match Schedule</h1>
       <nav className="bt bb tc mw7 center mt2">
         <a
           className={
