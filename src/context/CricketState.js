@@ -5,7 +5,8 @@ import { GET_DATA, CHANGE_STATUS, CHANGE_TYPE, GET_SERIES } from "./types";
 import * as CONST from "../Utils/constants";
 import { Query } from "react-apollo";
 import { default as ApolloClient } from "apollo-boost";
-import gql from "graphql-tag";
+import { getScheduleQuery } from "./queries";
+import { get } from "http";
 
 const CricketState = props => {
   const initialState = {
@@ -20,27 +21,10 @@ const CricketState = props => {
 
   const [state, dispatch] = useReducer(CricketReducer, initialState);
 
-  const getData = () => {
-    const query = gql`
-      {
-        schedule(type: "All", status: "upcoming", page: 0) {
-          matchID
-          seriesName
-          matchStatus
-          toss
-          homeTeamName
-          awayTeamName
-          seriesID
-          matchType
-          venue
-          startEndDate
-          matchResult
-        }
-      }
-    `;
+  const getData = (type, status) => {
     client
       .query({
-        query: query
+        query: getScheduleQuery(type, status)
       })
       .then(res =>
         dispatch({
