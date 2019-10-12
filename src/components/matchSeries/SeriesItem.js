@@ -1,10 +1,17 @@
-import React from "react";
+import React, { useContext } from "react";
+import CricketContext from "../../context/cricketContext";
 
 const SeriesItem = ({ series }) => {
+  const cricketContext = useContext(CricketContext);
+  const { setCurrentSeries, currentSeries } = cricketContext;
   return (
-    <article className="center w-90 mw6-ns br3 hidden ba b--black-20 mv2">
+    <article
+      className="center w-90 mw6-ns br3 hidden ba b--black-20 mv2 grow"
+      onClick={() => setCurrentSeries(series.seriesID)}
+    >
       <h1 className="f4 bg-near-white br3 br--top black-60 mv0 pv2 ph3">
         {series.seriesName}
+        {currentSeries}
       </h1>
       <div className="bt b--black-10">
         <article className="pa3 pa5-ns" data-name="slab-stat-small">

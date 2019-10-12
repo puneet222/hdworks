@@ -33,3 +33,18 @@ export const getSeriesListingQuery = type => gql`
     }
   }
 `;
+
+export const getMatchListingQuery = seriesID => gql`
+{
+    matcheslist(seriesID: "${seriesID}") {
+        matchID,
+        matchName,
+        homeTeamShortName,
+        awayTeamShortName,
+        matchResult,
+        venue,
+        matchType,
+        statusMessage,
+        toss
+    }
+}`;

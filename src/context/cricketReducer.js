@@ -3,7 +3,8 @@ import {
   CHANGE_TYPE,
   CHANGE_STATUS,
   GET_SERIES,
-  GET_SERIES_LISTING
+  GET_SERIES_LISTING,
+  SET_CURRENT_SERIES
 } from "./types";
 
 export default (state, action) => {
@@ -28,6 +29,12 @@ export default (state, action) => {
         ...state,
         status: action.payload,
         loading: true
+      };
+    }
+    case SET_CURRENT_SERIES: {
+      return {
+        ...state,
+        currentSeries: action.payload
       };
     }
     default:

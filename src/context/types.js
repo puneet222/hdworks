@@ -3,3 +3,4 @@ export const CHANGE_STATUS = "CHANGE_STATUS";
 export const CHANGE_TYPE = "CHANGE_TYPE";
 export const GET_SERIES = "GET_SERIES";
 export const GET_SERIES_LISTING = "GET_SERIES_LISTING";
+export const SET_CURRENT_SERIES = "SET_CURRENT_SERIES";

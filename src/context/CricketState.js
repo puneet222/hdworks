@@ -5,11 +5,16 @@ import {
   CHANGE_STATUS,
   CHANGE_TYPE,
   GET_SERIES,
-  GET_SERIES_LISTING
+  GET_SERIES_LISTING,
+  SET_CURRENT_SERIES
 } from "./types";
 import * as CONST from "../Utils/constants";
 import { default as ApolloClient } from "apollo-boost";
-import { getScheduleQuery, getSeriesListingQuery } from "./queries";
+import {
+  getScheduleQuery,
+  getSeriesListingQuery,
+  getMatchListingQuery
+} from "./queries";
 import { stat } from "fs";
 
 const CricketState = props => {
@@ -18,7 +23,8 @@ const CricketState = props => {
     type: CONST.ALL,
     loading: true,
     series: [],
-    seriesListing: []
+    seriesListing: [],
+    currentSeries: null
   };
 
   const client = new ApolloClient({
@@ -112,6 +118,15 @@ const CricketState = props => {
       });
   };
 
+  const getMatchListing = seriesID => {
+    const query = getMatchListingQuery(seriesID);
+    client
+      .query({
+        query: query
+      })
+      .then(res => console.log(res));
+  };
+
   const changeStatus = status => {
     dispatch({
       type: CHANGE_STATUS,
@@ -126,6 +141,13 @@ const CricketState = props => {
     });
   };
 
+  const setCurrentSeries = seriesID => {
+    dispatch({
+      type: SET_CURRENT_SERIES,
+      payload: seriesID
+    });
+  };
+
   return (
     <CricketContext.Provider
       value={{
@@ -134,10 +156,13 @@ const CricketState = props => {
         series: state.series,
         seriesListing: state.seriesListing,
         loading: state.loading,
+        currentSeries: state.currentSeries,
         getData,
         changeStatus,
         changeType,
-        getSeriesListing
+        getSeriesListing,
+        getMatchListing,
+        setCurrentSeries
       }}
     >
       {props.children}
