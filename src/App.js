@@ -1,16 +1,14 @@
 import React from "react";
 import "./App.css";
 import CricketState from "./context/CricketState";
-import Header from "./components/Header";
-import MatchType from "./components/MatchType";
-import Series from "./components/matchSeries/Series";
+import AllSeries from "./components/AllSeries";
+import MatchList from "./components/matches/MatchList";
 
 const App = () => {
   return (
     <CricketState>
-      <Header />
-      <MatchType />
-      <Series />
+      <AllSeries />
+      <MatchList />
     </CricketState>
   );
 };
