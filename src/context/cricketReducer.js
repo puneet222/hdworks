@@ -8,34 +8,25 @@ import {
 
 export default (state, action) => {
   switch (action.type) {
-    case GET_DATA: {
-      return {
-        ...state,
-        type: "ALL"
-      };
-    }
-    case GET_SERIES: {
-      return {
-        ...state,
-        series: action.payload
-      };
-    }
     case GET_SERIES_LISTING: {
       return {
         ...state,
-        seriesListing: action.payload
+        seriesListing: action.payload,
+        loading: false
       };
     }
     case CHANGE_TYPE: {
       return {
         ...state,
-        type: action.payload
+        type: action.payload,
+        loading: true
       };
     }
     case CHANGE_STATUS: {
       return {
         ...state,
-        status: action.payload
+        status: action.payload,
+        loading: true
       };
     }
     default:

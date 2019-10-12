@@ -7,7 +7,7 @@ const SeriesItem = ({ series }) => {
       <h1 className="f4 bg-near-white br3 br--top black-60 mv0 pv2 ph3">
         {series.seriesName}
       </h1>
-      <div className="pa3 bt b--black-10">
+      <div className="bt b--black-10">
         <article class="pa3 pa5-ns" data-name="slab-stat-small">
           <h3 class="f6 ttu tracked">{series.league}</h3>
           <div class="cf">

@@ -1,4 +1,5 @@
 import React, { useContext, useEffect } from "react";
+import Loader from "react-loader-spinner";
 import CricketContext from "../../context/cricketContext";
 import SeriesItem from "./SeriesItem";
 
@@ -9,13 +10,19 @@ const Series = () => {
     type,
     getData,
     seriesListing,
+    loading,
     getSeriesListing
   } = cricketContext;
   useEffect(() => {
     getSeriesListing(type);
-    getData(type, status);
   }, [status, type]);
-  return seriesListing.map(s => <SeriesItem key={s.matchID} series={s} />);
+  return !loading ? (
+    seriesListing.map(s => <SeriesItem key={s.matchID} series={s} />)
+  ) : (
+    <div className="tc pv6">
+      <Loader type="MutatingDots" color="#ff0000" height={100} width={100} />
+    </div>
+  );
 };
 
 export default Series;

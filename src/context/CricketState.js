@@ -15,6 +15,7 @@ const CricketState = props => {
   const initialState = {
     status: CONST.UPCOMING,
     type: CONST.ALL,
+    loading: true,
     series: [],
     seriesListing: []
   };
@@ -82,6 +83,7 @@ const CricketState = props => {
         type: state.type,
         series: state.series,
         seriesListing: state.seriesListing,
+        loading: state.loading,
         getData,
         changeStatus,
         changeType,
