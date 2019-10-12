@@ -1,5 +1,4 @@
 import gql from "graphql-tag";
-import { stat } from "fs";
 
 export const getScheduleQuery = (type, status) => gql`
   {

@@ -11,6 +11,7 @@ const MatchType = () => {
       <div className="fl w-third pa2">
         <a
           className="f6 w-100 tc grow no-underline br-pill ph3 pv2 mb2 dib white bg-purple"
+          href="#0"
           onClick={() => changeType(CONST.ALL)}
         >
           All
@@ -19,6 +20,7 @@ const MatchType = () => {
       <div className="fl w-third pa2">
         <a
           className="f6 w-100 tc grow no-underline br-pill ph3 pv2 mb2 dib white bg-light-purple"
+          href="#0"
           onClick={() => changeType(CONST.INTERNATIONAL)}
         >
           International
@@ -27,6 +29,7 @@ const MatchType = () => {
       <div className="fl w-third pa2">
         <a
           className="f6 w-100 tc grow no-underline br-pill ph3 pv2 mb2 dib white bg-hot-pink"
+          href="#0"
           onClick={() => changeType(CONST.DOMESTIC)}
         >
           Domestic

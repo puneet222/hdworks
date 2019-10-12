@@ -2,17 +2,14 @@ import React, { useReducer } from "react";
 import CricketContext from "./cricketContext";
 import CricketReducer from "./cricketReducer";
 import {
-  GET_DATA,
   CHANGE_STATUS,
   CHANGE_TYPE,
   GET_SERIES,
   GET_SERIES_LISTING
 } from "./types";
 import * as CONST from "../Utils/constants";
-import { Query } from "react-apollo";
 import { default as ApolloClient, gql } from "apollo-boost";
 import { getScheduleQuery, getSeriesListingQuery } from "./queries";
-import { get } from "http";
 
 const CricketState = props => {
   const initialState = {
@@ -56,7 +53,6 @@ const CricketState = props => {
       })
       .then(res => {
         let seriesList = mergeAllSeriesData(res.data.listseries);
-        console.log(seriesList);
         dispatch({
           type: GET_SERIES_LISTING,
           payload: seriesList
