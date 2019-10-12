@@ -10,6 +10,7 @@ import {
 import * as CONST from "../Utils/constants";
 import { default as ApolloClient } from "apollo-boost";
 import { getScheduleQuery, getSeriesListingQuery } from "./queries";
+import { stat } from "fs";
 
 const CricketState = props => {
   const initialState = {
@@ -47,7 +48,55 @@ const CricketState = props => {
     return series;
   };
 
-  const getSeriesListing = type => {
+  const segregateSeriesByStatus = (data, status) => {
+    let tmonth = new Date().getMonth();
+    let tyear = new Date().getFullYear();
+    switch (status) {
+      case CONST.UPCOMING: {
+        data = data.filter(item => {
+          let date = new Date(Number(item.startDate));
+          let m = date.getMonth();
+          let y = date.getFullYear();
+          return y > tyear
+            ? true
+            : y === tyear
+            ? m > tmonth
+              ? true
+              : false
+            : false;
+        });
+        return data;
+      }
+      case CONST.LIVE: {
+        data = data.filter(item => {
+          let date = new Date(Number(item.startDate));
+          let m = date.getMonth();
+          let y = date.getFullYear();
+          return m === tmonth && y === tyear ? true : false;
+        });
+        return data;
+      }
+      case CONST.DOMESTIC: {
+        data = data.filter(item => {
+          let date = new Date(Number(item.startDate));
+          let m = date.getMonth();
+          let y = date.getFullYear();
+          return y < tyear
+            ? true
+            : y === tyear
+            ? m < tmonth
+              ? true
+              : false
+            : false;
+        });
+        return data;
+      }
+      default:
+        return data;
+    }
+  };
+
+  const getSeriesListing = (type, status) => {
     const query = getSeriesListingQuery(type);
     client
       .query({
@@ -55,6 +104,7 @@ const CricketState = props => {
       })
       .then(res => {
         let seriesList = mergeAllSeriesData(res.data.listseries);
+        seriesList = segregateSeriesByStatus(seriesList, status);
         dispatch({
           type: GET_SERIES_LISTING,
           payload: seriesList

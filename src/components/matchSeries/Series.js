@@ -14,10 +14,10 @@ const Series = () => {
     getSeriesListing
   } = cricketContext;
   useEffect(() => {
-    getSeriesListing(type);
+    getSeriesListing(type, status);
   }, [status, type]);
   return !loading ? (
-    seriesListing.map(s => <SeriesItem key={s.matchID} series={s} />)
+    seriesListing.map(s => <SeriesItem key={s.seriesID} series={s} />)
   ) : (
     <div className="tc pv6">
       <Loader type="MutatingDots" color="#ff0000" height={100} width={100} />
