@@ -6,6 +6,12 @@ const MatchType = () => {
   const cricketContext = useContext(CricketContext);
   const { changeType, type } = cricketContext;
 
+  const onTypeChange = newType => {
+    if (newType !== type) {
+      changeType(newType);
+    }
+  };
+
   return (
     <div className="ph3 mb5">
       <div className="fl w-third pa2">
@@ -15,7 +21,7 @@ const MatchType = () => {
             (type === CONST.ALL ? "white bg-purple" : "purple")
           }
           href="#0"
-          onClick={() => changeType(CONST.ALL)}
+          onClick={() => onTypeChange(CONST.ALL)}
         >
           All
         </a>
@@ -27,7 +33,7 @@ const MatchType = () => {
             (type === CONST.INTERNATIONAL ? "bg-dark-blue white" : "dark-blue")
           }
           href="#0"
-          onClick={() => changeType(CONST.INTERNATIONAL)}
+          onClick={() => onTypeChange(CONST.INTERNATIONAL)}
         >
           International
         </a>
@@ -39,7 +45,7 @@ const MatchType = () => {
             (type === CONST.DOMESTIC ? "white bg-hot-pink" : "hot-pink")
           }
           href="#0"
-          onClick={() => changeType(CONST.DOMESTIC)}
+          onClick={() => onTypeChange(CONST.DOMESTIC)}
         >
           Domestic
         </a>
