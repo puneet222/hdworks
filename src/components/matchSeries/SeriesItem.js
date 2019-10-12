@@ -7,7 +7,12 @@ const SeriesItem = ({ series }) => {
   return (
     <article
       className="center w-90 mw6-ns br3 hidden ba b--black-20 mv2 grow"
-      onClick={() => setCurrentSeries(series.seriesID)}
+      onClick={() =>
+        setCurrentSeries({
+          seriesID: series.seriesID,
+          seriesName: series.seriesName
+        })
+      }
     >
       <h1 className="f4 bg-near-white br3 br--top black-60 mv0 pv2 ph3">
         {series.seriesName}

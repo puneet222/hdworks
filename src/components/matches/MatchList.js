@@ -8,13 +8,22 @@ const MatchList = () => {
   console.log(cricketContext);
   useEffect(() => {
     if (currentSeries) {
-      getMatchListing(currentSeries);
+      getMatchListing(currentSeries.seriesID);
     }
   }, [currentSeries]);
   return (
-    currentSeries &&
-    matches &&
-    matches.map(match => <MatchListItem match={match} key={match.matchID} />)
+    <div>
+      {currentSeries && (
+        <h2 className="mt2 mb0 tc f5 fw4 ttu tracked">
+          {currentSeries.seriesName}
+        </h2>
+      )}
+      {currentSeries &&
+        matches &&
+        matches.map(match => (
+          <MatchListItem match={match} key={match.matchID} />
+        ))}
+    </div>
   );
 };
 

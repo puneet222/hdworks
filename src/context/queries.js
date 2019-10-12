@@ -45,6 +45,7 @@ export const getMatchListingQuery = seriesID => gql`
         venue,
         matchType,
         statusMessage,
-        toss
+        toss,
+        seriesName
     }
 }`;
