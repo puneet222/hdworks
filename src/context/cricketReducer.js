@@ -4,7 +4,8 @@ import {
   CHANGE_STATUS,
   GET_SERIES,
   GET_SERIES_LISTING,
-  SET_CURRENT_SERIES
+  SET_CURRENT_SERIES,
+  GET_MATCH_LIST
 } from "./types";
 
 export default (state, action) => {
@@ -35,6 +36,12 @@ export default (state, action) => {
       return {
         ...state,
         currentSeries: action.payload
+      };
+    }
+    case GET_MATCH_LIST: {
+      return {
+        ...state,
+        matches: action.payload
       };
     }
     default:

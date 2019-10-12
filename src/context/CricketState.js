@@ -6,7 +6,8 @@ import {
   CHANGE_TYPE,
   GET_SERIES,
   GET_SERIES_LISTING,
-  SET_CURRENT_SERIES
+  SET_CURRENT_SERIES,
+  GET_MATCH_LIST
 } from "./types";
 import * as CONST from "../Utils/constants";
 import { default as ApolloClient } from "apollo-boost";
@@ -24,6 +25,7 @@ const CricketState = props => {
     loading: true,
     series: [],
     seriesListing: [],
+    matches: [],
     currentSeries: null
   };
 
@@ -124,7 +126,12 @@ const CricketState = props => {
       .query({
         query: query
       })
-      .then(res => console.log(res));
+      .then(res => {
+        dispatch({
+          type: GET_MATCH_LIST,
+          payload: res.data.matcheslist
+        });
+      });
   };
 
   const changeStatus = status => {
@@ -157,6 +164,7 @@ const CricketState = props => {
         seriesListing: state.seriesListing,
         loading: state.loading,
         currentSeries: state.currentSeries,
+        matches: state.matches,
         getData,
         changeStatus,
         changeType,
