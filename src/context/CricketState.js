@@ -1,11 +1,17 @@
 import React, { useReducer } from "react";
 import CricketContext from "./cricketContext";
 import CricketReducer from "./cricketReducer";
-import { GET_DATA, CHANGE_STATUS, CHANGE_TYPE, GET_SERIES } from "./types";
+import {
+  GET_DATA,
+  CHANGE_STATUS,
+  CHANGE_TYPE,
+  GET_SERIES,
+  GET_SERIES_LISTING
+} from "./types";
 import * as CONST from "../Utils/constants";
 import { Query } from "react-apollo";
 import { default as ApolloClient, gql } from "apollo-boost";
-import { getScheduleQuery } from "./queries";
+import { getScheduleQuery, getSeriesListingQuery } from "./queries";
 import { get } from "http";
 
 const CricketState = props => {
@@ -22,24 +28,7 @@ const CricketState = props => {
   const [state, dispatch] = useReducer(CricketReducer, initialState);
 
   const getData = (type, status) => {
-    const query = gql`
-      {
-        schedule(type: "${type}", status: "${status}", page: 0) {
-          matchID
-          seriesName
-          matchStatus
-          toss
-          homeTeamName
-          awayTeamName
-          seriesID
-          matchType
-          venue
-          startEndDate
-          matchResult
-        }
-      }
-    `;
-    console.log(query);
+    const query = getScheduleQuery(type, status);
     client
       .query({
         query: query
@@ -50,6 +39,29 @@ const CricketState = props => {
           payload: res.data.schedule
         })
       );
+  };
+
+  const mergeAllSeriesData = data => {
+    let series = [];
+    data.forEach(item => series.push(...item.series));
+    series = series.filter(item => item.seriesID !== "");
+    return series;
+  };
+
+  const getSeriesListing = type => {
+    const query = getSeriesListingQuery(type);
+    client
+      .query({
+        query: query
+      })
+      .then(res => {
+        let seriesList = mergeAllSeriesData(res.data.listseries);
+        console.log(seriesList);
+        dispatch({
+          type: GET_SERIES_LISTING,
+          payload: seriesList
+        });
+      });
   };
 
   const changeStatus = status => {
@@ -74,7 +86,8 @@ const CricketState = props => {
         series: state.series,
         getData,
         changeStatus,
-        changeType
+        changeType,
+        getSeriesListing
       }}
     >
       {props.children}

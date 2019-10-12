@@ -3,7 +3,7 @@ import { stat } from "fs";
 
 export const getScheduleQuery = (type, status) => gql`
   {
-    schedule(type: ${type}, status: ${status}, page: 0) {
+    schedule(type: "${type}", status: "${status}", page: 0) {
       matchID
       seriesName
       matchStatus
@@ -15,6 +15,18 @@ export const getScheduleQuery = (type, status) => gql`
       venue
       startEndDate
       matchResult
+    }
+  }
+`;
+
+export const getSeriesListingQuery = type => gql`
+  {
+    listseries(type: "${type}") {
+    month
+    series {
+        seriesID
+        seriesName
+    }
     }
   }
 `;
