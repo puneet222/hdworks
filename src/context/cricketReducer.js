@@ -35,13 +35,15 @@ export default (state, action) => {
     case SET_CURRENT_SERIES: {
       return {
         ...state,
-        currentSeries: action.payload
+        currentSeries: action.payload,
+        loading: true
       };
     }
     case GET_MATCH_LIST: {
       return {
         ...state,
-        matches: action.payload
+        matches: action.payload,
+        loading: false
       };
     }
     default:

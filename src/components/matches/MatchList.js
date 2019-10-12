@@ -1,11 +1,11 @@
 import React, { useContext, useEffect } from "react";
+import Loader from "react-loader-spinner";
 import CricketContext from "../../context/cricketContext";
 import MatchListItem from "./MatchListItem";
 
 const MatchList = () => {
   const cricketContext = useContext(CricketContext);
-  const { matches, currentSeries, getMatchListing } = cricketContext;
-  console.log(cricketContext);
+  const { matches, currentSeries, getMatchListing, loading } = cricketContext;
   useEffect(() => {
     if (currentSeries) {
       getMatchListing(currentSeries.seriesID);
@@ -21,11 +21,21 @@ const MatchList = () => {
           <nav className="bt bb tc mw7 center mt2"></nav>
         </header>
       )}
-      {currentSeries &&
-        matches &&
-        matches.map(match => (
-          <MatchListItem match={match} key={match.matchID} />
-        ))}
+      {!loading && currentSeries && matches
+        ? matches.map(match => (
+            <MatchListItem match={match} key={match.matchID} />
+          ))
+        : currentSeries &&
+          matches && (
+            <div className="tc pv6">
+              <Loader
+                type="MutatingDots"
+                color="#ff0000"
+                height={100}
+                width={100}
+              />
+            </div>
+          )}
     </div>
   );
 };
