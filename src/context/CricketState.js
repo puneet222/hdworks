@@ -4,7 +4,7 @@ import CricketReducer from "./cricketReducer";
 import { GET_DATA, CHANGE_STATUS, CHANGE_TYPE, GET_SERIES } from "./types";
 import * as CONST from "../Utils/constants";
 import { Query } from "react-apollo";
-import { default as ApolloClient } from "apollo-boost";
+import { default as ApolloClient, gql } from "apollo-boost";
 import { getScheduleQuery } from "./queries";
 import { get } from "http";
 
@@ -22,9 +22,27 @@ const CricketState = props => {
   const [state, dispatch] = useReducer(CricketReducer, initialState);
 
   const getData = (type, status) => {
+    const query = gql`
+      {
+        schedule(type: "${type}", status: "${status}", page: 0) {
+          matchID
+          seriesName
+          matchStatus
+          toss
+          homeTeamName
+          awayTeamName
+          seriesID
+          matchType
+          venue
+          startEndDate
+          matchResult
+        }
+      }
+    `;
+    console.log(query);
     client
       .query({
-        query: getScheduleQuery(type, status)
+        query: query
       })
       .then(res =>
         dispatch({

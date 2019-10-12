@@ -7,7 +7,7 @@ const Series = () => {
   const { status, type, getData, series } = cricketContext;
   useEffect(() => {
     console.log(cricketContext);
-    getData();
+    getData(type, status);
   }, [status, type]);
   return series.map(s => <SeriesItem key={s.matchID} series={s} />);
 };

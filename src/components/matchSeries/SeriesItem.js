@@ -30,7 +30,7 @@ const SeriesItem = ({ series }) => {
       </div>
       <div className="tc">
         <a
-          class="tc f6 link dim br-pill ph3 pv2 mb2 dib white bg-navy"
+          className="tc f6 link dim br-pill ph3 pv2 mb2 dib white bg-navy"
           href="#0"
         >
           {Math.round(Math.random() * 60)} minutes to toss
