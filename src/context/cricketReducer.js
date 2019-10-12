@@ -1,4 +1,4 @@
-import { GET_DATA } from "./types";
+import { GET_DATA, CHANGE_TYPE, CHANGE_STATUS } from "./types";
 
 export default (state, action) => {
   switch (action.type) {
@@ -6,6 +6,18 @@ export default (state, action) => {
       return {
         ...state,
         type: "ALL"
+      };
+    }
+    case CHANGE_TYPE: {
+      return {
+        ...state,
+        type: action.payload
+      };
+    }
+    case CHANGE_STATUS: {
+      return {
+        ...state,
+        status: action.payload
       };
     }
     default:
