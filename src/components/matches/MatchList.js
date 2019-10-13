@@ -16,6 +16,7 @@ const MatchList = () => {
     if (currentSeries) {
       getMatchListing(currentSeries.seriesID);
     }
+    // eslint-disable-next-line
   }, [currentSeries]);
   return (
     <div>

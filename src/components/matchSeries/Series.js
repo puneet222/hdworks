@@ -8,13 +8,13 @@ const Series = () => {
   const {
     status,
     type,
-    getData,
     seriesListing,
     loading,
     getSeriesListing
   } = cricketContext;
   useEffect(() => {
     getSeriesListing(type, status);
+    // eslint-disable-next-line
   }, [status, type]);
   return !loading ? (
     seriesListing.map(s => <SeriesItem key={s.seriesID} series={s} />)

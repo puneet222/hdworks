@@ -16,7 +16,6 @@ import {
   getSeriesListingQuery,
   getMatchListingQuery
 } from "./queries";
-import { stat } from "fs";
 
 const CricketState = props => {
   const initialState = {
