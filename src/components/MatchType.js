@@ -13,7 +13,7 @@ const MatchType = () => {
   };
 
   return (
-    <div className="ph3 mb5">
+    <div className="ph3 mb5 center mw7">
       <div className="fl w-third pa2">
         <a
           className={

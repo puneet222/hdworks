@@ -20,7 +20,7 @@ const Series = () => {
     seriesListing.map(s => <SeriesItem key={s.seriesID} series={s} />)
   ) : (
     <div className="tc pv6">
-      <Loader type="MutatingDots" color="#ff0000" height={100} width={100} />
+      <Loader type="TailSpin" color="#ff0000" height={50} width={50} />
     </div>
   );
 };
