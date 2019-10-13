@@ -2,11 +2,6 @@ import React from "react";
 import MatchFlag from "./MatchFlag";
 
 const MatchListItem = ({ match }) => {
-  const getDate = date => {
-    let d = new Date(Number(date));
-    var options = { year: "numeric", month: "long", day: "numeric" };
-    return d.toLocaleDateString("en-US", options);
-  };
   return (
     <article className="center w-90 mw6-ns br3 hidden ba b--black-10 mv4">
       <h1 className="f4 bg-light-blue br3 br--top black-60 mv0 pv2 ph3">
@@ -21,9 +16,6 @@ const MatchListItem = ({ match }) => {
             {match.venue}
           </a>
           <MatchFlag match={match} />
-          <div>
-            <h3 className="mv0 fw3 f5">{getDate(match.startDate)}</h3>
-          </div>
         </div>
       </div>
     </article>

@@ -34,7 +34,7 @@ const MatchList = () => {
             onClick={() => setCurrentSeries(null)}
           >
             <svg
-              class="w1"
+              className="w1"
               data-icon="chevronLeft"
               viewBox="0 0 32 32"
               style={{ fill: "currentcolor" }}
@@ -42,7 +42,7 @@ const MatchList = () => {
               <title>chevronLeft icon</title>
               <path d="M20 1 L24 5 L14 16 L24 27 L20 31 L6 16 z"></path>
             </svg>
-            <span class="pl1">Series</span>
+            <span className="pl1">Series</span>
           </a>
         </div>
       )}

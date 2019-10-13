@@ -3,10 +3,10 @@ import CricketContext from "../../context/cricketContext";
 
 const SeriesItem = ({ series }) => {
   const cricketContext = useContext(CricketContext);
-  const { setCurrentSeries, currentSeries } = cricketContext;
+  const { setCurrentSeries } = cricketContext;
   return (
     <article
-      className="center w-90 mw6-ns br3 hidden ba b--black-20 mv2 grow"
+      className="center w-90 mw6-ns br2 hidden ba b--black-20 mv2 grow"
       onClick={() =>
         setCurrentSeries({
           seriesID: series.seriesID,
@@ -14,8 +14,17 @@ const SeriesItem = ({ series }) => {
         })
       }
     >
-      <h1 className="f5 bg-near-white br3 br--top black-60 mv0 pv2 ph3">
+      <h1 className="f5 bg-near-white br2 br--top black-60 mv0 pv2 ph3">
         {series.seriesName}
+        <svg
+          className="w1 absolute right-1"
+          data-icon="chevronRight"
+          viewBox="0 0 32 32"
+          style={{ fill: "currentcolor" }}
+        >
+          <title>chevronRight icon</title>
+          <path d="M12 1 L26 16 L12 31 L8 27 L18 16 L8 5 z"></path>
+        </svg>
       </h1>
       <div className="bt b--black-10">
         <article className="pa3-l pa3-m pa3-ns" data-name="slab-stat-small">
